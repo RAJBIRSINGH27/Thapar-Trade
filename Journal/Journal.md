@@ -51,3 +51,45 @@ The team finalized the basic project idea, identified the primary problem, defin
 ### Next Steps
 
 The team will conduct further research, refine the problem statement, define the proposed solution and requirements, and prepare the project documentation.
+
+
+
+
+---
+
+## Journal Entry 2 — System Design and DFD Development
+
+**Date:** 30/08/2026
+
+**Project:** ThaparTrade
+
+### Activity
+
+Design and development of the Data Flow Diagrams (DFDs) for the ThaparTrade system, including the Level 0 Context Diagram and Level 1 DFD.
+
+### Discussion
+
+The team worked on representing the flow of information within the ThaparTrade system. The Level 0 DFD was created to provide a high-level overview of the system and its interaction with external entities.
+
+The main external entities identified were the **Student**, **Admin**, and **Payment Gateway**. The Student interacts with the system for user registration and login, product searching, placing orders, making payments, tracking orders, and providing reviews and feedback. The Admin manages users, products, orders, payments, and reviews, while the Payment Gateway handles payment processing and returns the payment status to the system.
+
+The Level 1 DFD was then developed by decomposing the main Thapar Trade System into major processes. These processes include User Management, Product Management and Search, Cart and Order Management, Payment Processing, Order Tracking, Review and Feedback, and Admin Management.
+
+The required data stores were also identified, including the User Database, Product Database, Order Database, Payment Database, and Review Database. Data flows were defined between the external entities, processes, and data stores to represent how information is entered, processed, stored, and retrieved.
+
+### Work Completed
+
+- Created the Level 0 Context DFD.
+- Identified the external entities of the system.
+- Defined the major data flows between users and the system.
+- Created the Level 1 DFD.
+- Identified and numbered the major system processes.
+- Identified the required data stores.
+- Defined data flows between processes and databases.
+- Added payment interaction with the Payment Gateway.
+- Added Admin management and reporting flows.
+- Reviewed the diagrams for consistency and readability.
+
+### Outcome
+
+The Level 0 and Level 1 DFDs for the ThaparTrade system were successfully developed. The diagrams provide a clear representation of how data moves through the system and how different users, processes, and databases interact with each other.
