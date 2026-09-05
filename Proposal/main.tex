@@ -4,7 +4,9 @@
 % PACKAGES
 % =========================================================
 
-\usepackage[margin=0.8in]{geometry}
+\usepackage[margin=0.78in]{geometry}
+\usepackage{mathptmx}
+\usepackage{microtype}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{enumitem}
@@ -14,7 +16,11 @@
 \usepackage{titlesec}
 \usepackage{setspace}
 
-\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{
+    positioning,
+    arrows.meta,
+    shapes.geometric
+}
 
 % =========================================================
 % DOCUMENT FORMATTING
@@ -27,19 +33,19 @@
 }
 
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{5pt}
+\setlength{\parskip}{4pt}
 
 \onehalfspacing
 
 \titleformat{\section}
 {\large\bfseries}
-{\thesection.}
+{\thesection}
 {0.5em}
 {}
 
 \titleformat{\subsection}
 {\normalsize\bfseries}
-{\thesubsection.}
+{\thesubsection}
 {0.5em}
 {}
 
@@ -62,191 +68,578 @@
 \begin{document}
 
 % =========================================================
-% TITLE
+% FRONT PAGE
 % =========================================================
 
 \begin{center}
 
-{\Large \textbf{THAPAR TRADE}}\\[0.25cm]
+{\LARGE\textbf{THAPAR TRADE}}\\[0.18cm]
 
 {\large
 \textbf{A Campus Marketplace for Student-to-Student Trading}
-}\\[0.45cm]
+}\\[0.42cm]
 
 {\normalsize
-Rajbir Singh -- 1024030453\\
-Chitesh Jindal -- 1024030454\\
+Project Proposal for UCS503P
+}\\[0.10cm]
+
+{\normalsize
+Submitted to: Jeelani Asif
+}\\[0.10cm]
+
+{\normalsize
+\textbf{Thapar Institute of Engineering and Technology}
+}\\[0.35cm]
+
+{\normalsize
+Rajbir Singh -- 1024030453
+\hspace{0.45cm}
+Chitesh Jindal -- 1024030454
+\hspace{0.45cm}
 Ishan Garg -- 1024031095
-}\\[0.3cm]
-
-{\normalsize
-Thapar Institute of Engineering and Technology
-}\\[0.15cm]
-
-{\normalsize
-UCS503P -- Project Proposal
-}\\[0.15cm]
-
+}\\[0.20cm]
 {\normalsize
 August 2026
 }
 
 \end{center}
 
-\vspace{0.15cm}
+\vspace{0.05cm}
 \hrule
-\vspace{0.2cm}
+\vspace{0.12cm}
 
 % =========================================================
-% 1. INTRODUCTION / PROBLEM STATEMENT
+% 1. HIGHER-ORDER GOAL
 % =========================================================
 
-\section{Introduction and Problem Statement}
+\section{Higher-order goal}
 
-Student-to-student exchange of used products is a common
-requirement within a university environment. At Thapar, students
-may need to buy or sell textbooks, calculators, cycles,
-electronics, furniture, hostel appliances and other academic or
-personal items. These transactions are currently facilitated
-largely through informal channels such as WhatsApp groups, ION
-groups, personal contacts and word of mouth.
+The project aims to provide a structured and reliable campus
+marketplace for student-to-student exchange of used products at
+Thapar Institute of Engineering and Technology. Students commonly
+need to buy or sell textbooks, calculators, cycles, electronics,
+furniture, hostel appliances and other academic or personal items.
+These exchanges are currently facilitated largely through informal
+channels such as WhatsApp groups, ION groups, personal contacts and
+word of mouth.
 
-Although these channels enable communication, they do not provide
-the functionality of a structured marketplace. Product
-information becomes distributed across multiple conversations,
-making relevant listings difficult to discover. Buyers cannot
-reliably search or filter products by category, price, condition
-or availability. Sellers may also fail to update or remove
-listings after an item has been sold, resulting in unnecessary
-communication and inaccurate availability information.
+% =========================================================
+% 2. PROBLEM STATEMENT
+% =========================================================
+
+\section{Problem Statement}
+
+Although informal channels enable communication, they do not provide
+the functionality of a structured marketplace. Product information
+becomes distributed across multiple conversations, making relevant
+listings difficult to discover. Buyers cannot reliably search or
+filter products by category, price, condition or availability.
+Sellers may also fail to update or remove listings after an item has
+been sold, resulting in unnecessary communication and inaccurate
+availability information.
 
 A further challenge is the reliability of marketplace listings.
-For example, a student may jokingly or misleadingly list a
-product belonging to another student as if it were their own,
-even though the actual product is not for sale. A general
-marketplace does not provide a campus-specific mechanism through
-which such listings can be reported and reviewed.
+For example, a student may jokingly or misleadingly list a product
+belonging to another student as if it were their own, even though the
+actual product is not for sale. A general marketplace does not provide
+a campus-specific mechanism through which such listings can be
+reported and reviewed.
 
-\textbf{Thapar Trade} proposes a centralized, campus-specific
-marketplace that addresses these limitations through structured
-product listings, student authentication, search and filtering,
-availability management, reporting and administrative moderation.
-Students will be able to report listings that they believe are
-unauthorized, misleading or falsely claim ownership. Reported
-listings can then be reviewed by an administrator and removed or
-restored as appropriate.
-
-The project therefore aims to make student-to-student trading
-more organized, searchable and reliable while providing a
-practical mechanism for handling misleading or unauthorized
-listings.
-
-% =========================================================
-% 2. OBJECTIVES
-% =========================================================
-
-\section{Objectives}
-
-The primary objective is to design and implement a functional
-campus marketplace that provides a structured workflow for
-student-to-student trading.
-
-The project will pursue the following objectives:
+Key bottlenecks include:
 
 \begin{itemize}
 
-    \item Develop an authenticated web platform through which
-    students can create, browse and manage product listings.
+    \item \textbf{Fragmented discovery:}
+    Listings are distributed across multiple informal communication
+    channels.
 
-    \item Implement keyword-based search and filtering by
-    category, price, condition and availability.
+    \item \textbf{Weak searchability:}
+    Buyers cannot consistently filter products by category, price,
+    condition and availability.
 
-    \item Implement listing states of \textit{Available},
-    \textit{Reserved} and \textit{Sold} to maintain accurate
-    product availability.
+    \item \textbf{Stale listings:}
+    Sold products may remain visible because sellers do not update
+    their posts.
 
-    \item Provide structured product information including
-    descriptions, prices, conditions and images.
+    \item \textbf{Misleading listings:}
+    Unauthorized, prank or false-ownership listings may be difficult
+    to identify and resolve.
 
-    \item Implement a reporting mechanism for suspicious,
-    misleading or unauthorized listings.
-
-    \item Develop an administrative moderation interface for
-    reviewing reports and taking appropriate action.
-
-    \item Validate the system through functional testing and
-    user-acceptance testing with a small group of student users.
+    \item \textbf{Lack of moderation workflow:}
+    Existing channels do not provide a structured report-to-review
+    process for disputed listings.
 
 \end{itemize}
 
-The project will prioritize a complete and reliable core
-marketplace before considering advanced functionality.
-
 % =========================================================
-% 3. METHODOLOGY
+% 3. PROPOSED SOLUTION
 % =========================================================
 
-\section{Methodology}
+\section{Proposed Solution}
 
-The project will follow an iterative software-engineering
-methodology in which the system is developed as a set of
-integrated functional modules. The methodology will cover
-architecture design, module implementation, system integration,
-testing and validation.
+\subsection{Overview}
 
-\subsection{System Architecture}
+Build a campus-specific web marketplace with authenticated student
+accounts, structured product listings, search and filtering,
+availability management, reporting and administrative moderation.
+The platform will allow students to publish standardized listings
+and buyers to discover products through a searchable marketplace.
 
-The proposed system will use a three-layer architecture
-consisting of a presentation layer, application layer and data
-layer.
+The proposed solution consists of the following components:
 
-\begin{center}
+\begin{itemize}
 
-\begin{tikzpicture}[
-    node distance=1.15cm,
-    box/.style={
-        draw,
-        rounded corners,
-        minimum width=5.4cm,
-        minimum height=0.8cm,
-        align=center
-    },
-    arrow/.style={
-        -{Latex},
-        thick
-    }
-]
+    \item \textbf{Student Marketplace:}
+    Interface for browsing, searching, filtering and viewing product
+    listings.
 
-\node[box] (frontend)
-{\textbf{Presentation Layer}\\
-Student Marketplace and Administrative Interface};
+    \item \textbf{Authentication and User Management:}
+    Associates marketplace activity with an authenticated student
+    account.
 
-\node[box, below=of frontend] (backend)
-{\textbf{Application Layer}\\
-Authentication, Listings, Search, Reports and Moderation};
+    \item \textbf{Product Listing Module:}
+    Captures title, category, description, price, condition and
+    images, with validation before publication.
 
-\node[box, below=of backend] (database)
-{\textbf{Data Layer}\\
-Users, Listings, Categories and Reports};
+    \item \textbf{Listing Lifecycle Manager:}
+    Maintains \textit{Available}, \textit{Reserved} and
+    \textit{Sold} states.
 
-\draw[arrow] (frontend) -- (backend);
-\draw[arrow] (backend) -- (database);
+    \item \textbf{Reporting Mechanism:}
+    Allows users to report misleading, unauthorized, inappropriate
+    or falsely claimed listings.
+
+    \item \textbf{Administrative Moderation:}
+    Provides a dashboard for reviewing reports and temporarily
+    restricting, removing or restoring listings.
+
+\end{itemize}
+
+% =========================================================
+% CORE WORKFLOW
+% =========================================================
+
+\subsection{Core workflow}
+
+The principal marketplace workflow is:
+
+\begin{enumerate}
+
+    \item A student authenticates with the platform.
+
+    \item The seller creates a listing by entering standardized
+    product information.
+
+    \item The system validates required fields before publication.
+
+    \item The listing is published with an \textit{Available} status.
+
+    \item Buyers search and filter the marketplace to locate relevant
+    products.
+
+    \item A buyer views product and seller information and contacts
+    the seller.
+
+    \item The listing can transition to \textit{Reserved} and
+    subsequently \textit{Sold}.
+
+\end{enumerate}
+
+% =========================================================
+% FIGURE 1
+% =========================================================
+
+\begin{figure}[H]
+\centering
+
+\begin{tikzpicture}
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.45cm,
+    minimum height=0.82cm,
+    inner sep=4pt
+] (a) {
+    \textbf{1. Authenticate}\\
+    Student Account
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.45cm,
+    minimum height=0.82cm,
+    inner sep=4pt,
+    right=0.5cm of a
+] (b) {
+    \textbf{2. Create Listing}\\
+    Product Details
+};
+
+\node[
+    diamond,
+    draw,
+    thick,
+    aspect=2,
+    align=center,
+    inner sep=2pt,
+    minimum width=2.35cm,
+    right=0.65cm of b
+] (c) {
+    Valid?
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.45cm,
+    minimum height=0.82cm,
+    inner sep=4pt,
+    below=0.7cm of c
+] (d) {
+    \textbf{3. Publish}\\
+    Available
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.45cm,
+    minimum height=0.82cm,
+    inner sep=4pt,
+    left=0.5cm of d
+] (e) {
+    \textbf{4. Search}\\
+    Filter Results
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.45cm,
+    minimum height=0.82cm,
+    inner sep=4pt,
+    left=0.5cm of e
+] (f) {
+    \textbf{5. Contact Seller}\\
+    Product Details
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.45cm,
+    minimum height=0.82cm,
+    inner sep=4pt,
+    below=0.7cm of f
+] (g) {
+    \textbf{6. Transaction}\\
+    Reserved / Sold
+};
+
+\draw[-{Latex[length=2mm]}, thick]
+(a) -- (b);
+
+\draw[-{Latex[length=2mm]}, thick]
+(b) -- (c);
+
+\draw[-{Latex[length=2mm]}, thick]
+(c) -- node[right,font=\scriptsize]{Yes} (d);
+
+\draw[-{Latex[length=2mm]}, thick]
+(d) -- (e);
+
+\draw[-{Latex[length=2mm]}, thick]
+(e) -- (f);
+
+\draw[-{Latex[length=2mm]}, thick]
+(f) -- (g);
+
+\draw[-{Latex[length=2mm]}, thick]
+(c.north)
+to[out=90,in=90]
+node[above,font=\scriptsize]{No: correct details}
+(b.north);
 
 \end{tikzpicture}
 
-\end{center}
+\caption{Thapar Trade Core Marketplace Workflow}
+
+\end{figure}
+
+% =========================================================
+% REPORTING
+% =========================================================
+
+\subsection{Reporting and moderation workflow}
+
+The reporting mechanism is designed to address cases in which a
+student lists another student's product without authorization,
+including misleading or prank listings. A user can select
+``Report Listing'' from the product page and choose a relevant
+reason such as product not for sale, actual ownership, false
+ownership claim, misleading information or other.
+
+The report is stored in the database and becomes available to the
+administrator through the moderation dashboard. The administrator
+reviews the evidence and either restores the listing, removes it,
+or temporarily restricts it where appropriate.
+
+% =========================================================
+% FIGURE 2
+% =========================================================
+
+\begin{figure}[H]
+\centering
+
+\begin{tikzpicture}
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.5cm,
+    minimum height=0.78cm,
+    inner sep=4pt
+] (l) {
+    \textbf{Listing}\\
+    Published Product
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.5cm,
+    minimum height=0.78cm,
+    inner sep=4pt,
+    right=0.55cm of l
+] (r) {
+    \textbf{Report}\\
+    Reason + Evidence
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.65cm,
+    minimum height=0.78cm,
+    inner sep=4pt,
+    right=0.55cm of r
+] (v) {
+    \textbf{Administrative Review}\\
+    Moderation Dashboard
+};
+
+\node[
+    diamond,
+    draw,
+    thick,
+    aspect=2,
+    align=center,
+    inner sep=2pt,
+    minimum width=2.5cm,
+    below=0.8cm of v
+] (q) {
+    Action\\
+    Required?
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.35cm,
+    minimum height=0.75cm,
+    inner sep=4pt,
+    below left=0.75cm and 0.25cm of q
+] (x) {
+    \textbf{Remove / Restrict}\\
+    Problem Confirmed
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.35cm,
+    minimum height=0.75cm,
+    inner sep=4pt,
+    below right=0.75cm and 0.25cm of q
+] (y) {
+    \textbf{Restore}\\
+    No Violation
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.5cm,
+    minimum height=0.75cm,
+    inner sep=4pt,
+    below=2.35cm of q
+] (z) {
+    \textbf{Resolved}\\
+    Record Decision
+};
+
+\draw[-{Latex[length=2mm]}, thick]
+(l) -- (r);
+
+\draw[-{Latex[length=2mm]}, thick]
+(r) -- (v);
+
+\draw[-{Latex[length=2mm]}, thick]
+(v) -- (q);
+
+\draw[-{Latex[length=2mm]}, thick]
+(q) -- node[above left,font=\scriptsize]{Yes} (x);
+
+\draw[-{Latex[length=2mm]}, thick]
+(q) -- node[above right,font=\scriptsize]{No} (y);
+
+\draw[-{Latex[length=2mm]}, thick]
+(x.south) |- (z.west);
+
+\draw[-{Latex[length=2mm]}, thick]
+(y.south) |- (z.east);
+
+\end{tikzpicture}
+
+\caption{Reporting and Administrative Moderation Workflow}
+
+\end{figure}
+
+% =========================================================
+% 4. SOLUTION APPROACH
+% =========================================================
+
+\section{Solution Approach}
+
+This project focuses on building a reliable campus marketplace as
+an integrated software-engineering system rather than introducing
+complex research-driven algorithms. Development will proceed
+incrementally, beginning with the database schema and authentication
+layer, followed by listing creation and marketplace functionality.
+Search, filtering, status management, reporting and moderation will
+then be integrated with the core system.
+
+% =========================================================
+% ARCHITECTURE
+% =========================================================
+
+\subsection{System architecture}
+
+The proposed system uses a three-layer architecture consisting of a
+presentation layer, application layer and data layer. The separation
+supports modular development and keeps user-interface concerns,
+marketplace logic and persistent data management distinct.
+
+% =========================================================
+% FIGURE 3
+% =========================================================
+
+\begin{figure}[H]
+\centering
+
+\begin{tikzpicture}
+
+\node[
+    draw,
+    rounded corners=6pt,
+    thick,
+    align=center,
+    text width=4.7cm,
+    minimum height=1.05cm,
+    inner sep=5pt
+] (p) {
+    \textbf{Presentation Layer}\\
+    Student Marketplace UI\\
+    Administrative Moderation UI
+};
+
+\node[
+    draw,
+    rounded corners=6pt,
+    thick,
+    align=center,
+    text width=4.7cm,
+    minimum height=1.05cm,
+    inner sep=5pt,
+    below=0.65cm of p
+] (a) {
+    \textbf{Application Layer}\\
+    Authentication | Listings | Search\\
+    Reports | Moderation | Status Management
+};
+
+\node[
+    draw,
+    rounded corners=6pt,
+    thick,
+    align=center,
+    text width=4.7cm,
+    minimum height=1.05cm,
+    inner sep=5pt,
+    below=0.65cm of a
+] (d) {
+    \textbf{Data Layer}\\
+    Users | Listings | Categories\\
+    Reports | Listing Status
+};
+
+\draw[
+    -{Latex[length=2.2mm]},
+    thick
+]
+(p) -- node[right,font=\scriptsize]{Requests / Responses} (a);
+
+\draw[
+    -{Latex[length=2.2mm]},
+    thick
+]
+(a) -- node[right,font=\scriptsize]{CRUD Operations} (d);
+
+\end{tikzpicture}
+
+\caption{Thapar Trade 3-Layer Web Architecture}
+
+\end{figure}
 
 The presentation layer will provide responsive interfaces for
-students and administrators. The application layer will
-implement authentication, listing management, search, reporting
-and moderation logic. The data layer will maintain structured
-records for users, listings, categories and reports.
+students and administrators. The application layer will implement
+authentication, listing management, search, reporting and moderation
+logic. The data layer will maintain structured records for users,
+listings, categories and reports. Final implementation technologies
+will be selected according to team familiarity, development
+requirements and availability of free or academic-tier services.
 
-The final implementation technologies will be selected according
-to team familiarity, development requirements and availability of
-appropriate free or academic-tier services.
+% =========================================================
+% FUNCTIONAL MODULES
+% =========================================================
 
-\subsection{Functional Modules}
+\subsection{Functional modules}
 
 The system will be implemented through the following modules:
 
@@ -257,269 +650,657 @@ The system will be implemented through the following modules:
     authenticated student account.
 
     \item \textbf{Product Listing:}
-    Sellers will provide standardized information including
-    product title, category, description, price, condition and
-    images. Required fields will be validated before publication.
+    Sellers will provide standardized information including product
+    title, category, description, price, condition and images.
+    Required fields will be validated before publication.
 
     \item \textbf{Marketplace Search:}
-    Students will be able to search listings using keywords and
-    refine results using category, price, condition and
-    availability filters.
+    Students will search listings using keywords and refine results
+    using category, price, condition and availability filters.
 
     \item \textbf{Listing Lifecycle:}
     Sellers will manage product availability using
-    \textit{Available}, \textit{Reserved} and \textit{Sold}
-    states.
+    \textit{Available}, \textit{Reserved} and \textit{Sold} states.
 
     \item \textbf{Product Details and Seller Information:}
-    Buyers will be able to view product information, listing
-    condition, price and relevant seller information before
-    contacting the seller.
+    Buyers will view product information, listing condition, price
+    and relevant seller information before contacting the seller.
 
     \item \textbf{Reporting Mechanism:}
-    Users will be able to report listings that they believe are
-    misleading, unauthorized, inappropriate or falsely claim
-    ownership.
+    Users will report listings they believe are misleading,
+    unauthorized, inappropriate or falsely claim ownership.
 
     \item \textbf{Administrative Moderation:}
-    Administrators will review submitted reports and may
-    temporarily restrict, remove or restore listings based on
-    the review.
+    Administrators will review submitted reports and may temporarily
+    restrict, remove or restore listings based on the review.
 
 \end{itemize}
 
-\subsection{Reporting and Moderation Workflow}
+% =========================================================
+% SYSTEM EXECUTION
+% =========================================================
 
-The reporting mechanism is designed to address cases in which a
-student lists another student's product without authorization,
-including misleading or prank listings.
+\subsection{System execution and integration}
 
-A user can select ``Report Listing'' from the product page and
-choose a relevant reason, such as:
+The integrated system will operate through the workflow below. The
+validation stage prevents incomplete listings from reaching the
+public marketplace, while the listing-state stage maintains accurate
+availability.
 
-\begin{itemize}
+% =========================================================
+% FIGURE 4
+% =========================================================
 
-    \item Product is not for sale.
-    \item I am the actual owner.
-    \item Seller is falsely claiming ownership.
-    \item Product information is misleading.
-    \item Other.
+\begin{figure}[H]
+\centering
 
-\end{itemize}
+\begin{tikzpicture}
 
-The report will be stored in the database and made available to
-the administrator through the moderation dashboard.
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.35cm,
+    minimum height=0.78cm,
+    inner sep=4pt
+] (a) {
+    \textbf{Authentication}\\
+    Student Access
+};
 
-The workflow will be:
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.35cm,
+    minimum height=0.78cm,
+    inner sep=4pt,
+    right=0.5cm of a
+] (b) {
+    \textbf{Create Listing}\\
+    Title, Price, Image
+};
 
-\begin{center}
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.35cm,
+    minimum height=0.78cm,
+    inner sep=4pt,
+    right=0.5cm of b
+] (c) {
+    \textbf{Validation}\\
+    Required Fields
+};
 
-\textbf{Listing}
-$\rightarrow$
-\textbf{Report}
-$\rightarrow$
-\textbf{Administrative Review}
-$\rightarrow$
-\textbf{Restore or Remove}
+\node[
+    diamond,
+    draw,
+    thick,
+    aspect=2,
+    align=center,
+    inner sep=2pt,
+    minimum width=2.35cm,
+    below=0.75cm of c
+] (d) {
+    Valid?
+};
 
-\end{center}
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.35cm,
+    minimum height=0.78cm,
+    inner sep=4pt,
+    left=0.5cm of d
+] (e) {
+    \textbf{Publish}\\
+    Available
+};
 
-This approach does not require every student to register their
-personal possessions in advance. Instead, it provides a
-practical mechanism for identifying and responding to disputed
-or misleading listings.
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.35cm,
+    minimum height=0.78cm,
+    inner sep=4pt,
+    left=0.5cm of e
+] (f) {
+    \textbf{Search + Filter}\\
+    Category / Price
+};
 
-\subsection{System Execution and Integration}
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.35cm,
+    minimum height=0.78cm,
+    inner sep=4pt,
+    below=0.65cm of f
+] (g) {
+    \textbf{Contact Seller}\\
+    Product Details
+};
 
-Development will proceed incrementally, beginning with the
-database schema and authentication layer, followed by product
-listing and marketplace functionality. Search, filtering and
-listing-status management will then be integrated with the core
-marketplace.
+\node[
+    diamond,
+    draw,
+    thick,
+    aspect=2,
+    align=center,
+    inner sep=2pt,
+    minimum width=2.55cm,
+    below=0.65cm of g
+] (h) {
+    Transaction?
+};
 
-The principal workflow will be:
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.2cm,
+    minimum height=0.72cm,
+    inner sep=4pt,
+    below left=0.6cm and -0.15cm of h
+] (i) {
+    \textbf{Reserved}\\
+    Temporarily Held
+};
 
-\begin{center}
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.2cm,
+    minimum height=0.72cm,
+    inner sep=4pt,
+    below right=0.6cm and -0.15cm of h
+] (j) {
+    \textbf{Sold}\\
+    Lifecycle Complete
+};
 
-\textbf{Authentication}
-$\rightarrow$
-\textbf{Create Listing}
-$\rightarrow$
-\textbf{Publish}
-$\rightarrow$
-\textbf{Search}
-$\rightarrow$
-\textbf{Contact Seller}
-$\rightarrow$
-\textbf{Reserved/Sold}
+\draw[-{Latex[length=2mm]}, thick]
+(a) -- (b);
 
-\end{center}
+\draw[-{Latex[length=2mm]}, thick]
+(b) -- (c);
 
-The reporting and moderation workflow will operate independently
-alongside the marketplace and can be triggered whenever a user
-identifies a potentially problematic listing.
+\draw[-{Latex[length=2mm]}, thick]
+(c) -- (d);
 
-\subsection{Testing and Validation}
+\draw[-{Latex[length=2mm]}, thick]
+(d) -- node[above,font=\scriptsize]{Yes} (e);
 
-Testing will be conducted at feature, integration and
-user-acceptance levels.
+\draw[-{Latex[length=2mm]}, thick]
+(e) -- (f);
 
-Individual functions such as authentication, listing creation,
-search, status updates and reporting will first be tested
-independently. Integrated workflows will then be tested to
-ensure that data remains consistent between the user interface,
-backend and database.
+\draw[-{Latex[length=2mm]}, thick]
+(f) -- (g);
 
-A small group of approximately 10--20 students will participate
-in user-acceptance testing. Representative tasks will include:
+\draw[-{Latex[length=2mm]}, thick]
+(g) -- (h);
+
+\draw[-{Latex[length=2mm]}, thick]
+(h) -- node[above left,font=\scriptsize]{Reserve} (i);
+
+\draw[-{Latex[length=2mm]}, thick]
+(h) -- node[above right,font=\scriptsize]{Complete} (j);
+
+\draw[-{Latex[length=2mm]}, thick]
+(d.west)
+to[out=180,in=180]
+node[left,font=\scriptsize,align=center]{No\\Correct Details}
+(b.west);
+
+\end{tikzpicture}
+
+\caption{System Execution and Listing Lifecycle}
+
+\end{figure}
+
+% =========================================================
+% 5. EVALUATION CRITERION
+% =========================================================
+
+\section{Evaluation Criterion}
+
+Testing will be conducted at feature, integration and user-acceptance
+levels. Individual functions such as authentication, listing
+creation, search, status updates and reporting will first be tested
+independently. Integrated workflows will then be tested to ensure
+that data remains consistent between the user interface, backend and
+database.
+
+A small group of approximately 10--20 students will participate in
+user-acceptance testing. Representative tasks will include:
 
 \begin{itemize}
 
     \item Locating a product using search and filters.
+
     \item Creating and publishing a product listing.
+
     \item Updating a listing from Available to Sold.
+
     \item Reporting a suspicious or unauthorized listing.
+
     \item Reviewing a reported listing through the administrative
     interface.
 
 \end{itemize}
 
-Evaluation will consider task completion, errors, time required
-and user feedback. The findings will be used to refine the
-interface and workflow before the final demonstration.
-
-\subsection{Constraints and Scope Control}
-
-The project will focus on a realistic semester-scale prototype.
-The system will not claim to automatically verify physical
-ownership of arbitrary products. It will instead provide
-authenticated student identities, seller declarations, reporting
-and administrative moderation.
-
-Payment processing, delivery services, automated fraud detection,
-AI-based ownership detection and complex recommendation systems
-are outside the initial scope. Advanced features may be
-considered only after the core marketplace is stable.
+Evaluation will consider task completion, errors, time required and
+user feedback. The findings will be used to refine the interface and
+workflow before the final demonstration.
 
 % =========================================================
-% 4. TIMELINE
+% TESTING WORKFLOW
+% =========================================================
+
+\subsection{Testing workflow}
+
+% =========================================================
+% FIGURE 5
+% =========================================================
+
+\begin{figure}[H]
+\centering
+
+\begin{tikzpicture}
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.65cm,
+    minimum height=0.78cm,
+    inner sep=4pt
+] (a) {
+    \textbf{Requirement Verification}\\
+    Expected Behaviour
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.65cm,
+    minimum height=0.78cm,
+    inner sep=4pt,
+    right=0.55cm of a
+] (b) {
+    \textbf{Functional Testing}\\
+    Modules + Inputs
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.65cm,
+    minimum height=0.78cm,
+    inner sep=4pt,
+    right=0.55cm of b
+] (c) {
+    \textbf{Integration Testing}\\
+    UI + Backend + DB
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.65cm,
+    minimum height=0.78cm,
+    inner sep=4pt,
+    below=0.65cm of c
+] (d) {
+    \textbf{Security / Access Testing}\\
+    Authentication + Roles
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.65cm,
+    minimum height=0.78cm,
+    inner sep=4pt,
+    left=0.55cm of d
+] (e) {
+    \textbf{User-Acceptance Testing}\\
+    10--20 Students
+};
+
+\node[
+    draw,
+    rounded corners=5pt,
+    thick,
+    align=center,
+    text width=2.65cm,
+    minimum height=0.78cm,
+    inner sep=4pt,
+    left=0.55cm of e
+] (f) {
+    \textbf{Final Validation}\\
+    Refine + Demonstrate
+};
+
+\draw[-{Latex[length=2mm]}, thick]
+(a) -- (b);
+
+\draw[-{Latex[length=2mm]}, thick]
+(b) -- (c);
+
+\draw[-{Latex[length=2mm]}, thick]
+(c) -- (d);
+
+\draw[-{Latex[length=2mm]}, thick]
+(d) -- (e);
+
+\draw[-{Latex[length=2mm]}, thick]
+(e) -- (f);
+
+\end{tikzpicture}
+
+\caption{Testing and Validation Pipeline}
+
+\end{figure}
+
+% =========================================================
+% 6. OPERATIONAL CONSTRAINTS
+% =========================================================
+
+\section{Operational Constraints}
+
+The project will focus on a realistic semester-scale prototype. The
+system will not claim to automatically verify physical ownership of
+arbitrary products. Instead, it will provide authenticated student
+identities, seller declarations, reporting and administrative
+moderation.
+
+Payment processing, delivery services, automated fraud detection,
+AI-based ownership detection and complex recommendation systems are
+outside the initial scope. Advanced features may be considered only
+after the core marketplace is stable.
+
+% =========================================================
+% 7. SCALABILITY AND AVAILABILITY
+% =========================================================
+
+\section{Scalability and Availability}
+
+The architecture is intended to support future growth without
+changing the core marketplace workflow. Separating the presentation,
+application and data responsibilities allows individual modules to be
+improved independently. Free or academic-tier hosting and database
+services will be preferred during development, while the design can
+later be migrated to larger infrastructure if required.
+
+The principal availability considerations are:
+
+\begin{itemize}
+
+    \item Keep listing and search operations lightweight so normal
+    student traffic remains responsive.
+
+    \item Store listing and report records in structured persistent
+    storage.
+
+    \item Keep moderation operations separated from the normal
+    student browsing workflow.
+
+    \item Use modular interfaces so deployment infrastructure can be
+    replaced without redesigning the application logic.
+
+\end{itemize}
+
+% =========================================================
+% 8. PROJECT SCOPE AND DELIVERABLES
+% =========================================================
+
+\section{Project Scope and Deliverables}
+
+\subsection{Initial deliverable}
+
+\begin{itemize}
+
+    \item Authenticated student marketplace interface.
+
+    \item Product listing creation with structured fields and
+    validation.
+
+    \item Marketplace browsing, search and filtering.
+
+    \item Available / Reserved / Sold listing lifecycle.
+
+    \item Product details and seller information.
+
+    \item Basic reporting and administrative moderation interface.
+
+\end{itemize}
+
+\subsection{Subsequent deliverables}
+
+\begin{itemize}
+
+    \item Improved search and filtering behaviour.
+
+    \item Refined moderation dashboard and reporting records.
+
+    \item User-acceptance testing with student participants.
+
+    \item Deployment of the integrated prototype and final
+    documentation.
+
+\end{itemize}
+
+% =========================================================
+% 9. RISKS AND MITIGATIONS
+% =========================================================
+
+\section{Risks and Mitigations}
+
+\begin{itemize}
+
+    \item \textbf{Misleading listings:}
+    Provide reporting reasons and an administrative review workflow
+    so disputed listings can be investigated.
+
+    \item \textbf{Stale availability:}
+    Use explicit Available, Reserved and Sold states and allow
+    sellers to update listing status.
+
+    \item \textbf{Incomplete listings:}
+    Validate required fields before publication.
+
+    \item \textbf{Integration defects:}
+    Perform feature-level tests followed by end-to-end integration
+    and user-acceptance testing.
+
+    \item \textbf{Limited development resources:}
+    Prioritize the complete core marketplace before considering
+    advanced features.
+
+\end{itemize}
+
+% =========================================================
+% 10. TIMELINE
 % =========================================================
 
 \section{Timeline}
 
 \begin{table}[H]
 \centering
-\renewcommand{\arraystretch}{1.35}
 
-\begin{tabular}{p{1.2cm} p{5.1cm} p{6.1cm}}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tabular}{
+    p{1.0cm}
+    p{5.0cm}
+    p{6.4cm}
+}
 
 \toprule
+
 \textbf{Weeks} &
 \textbf{Development Phase} &
-\textbf{Expected Deliverable} \\
+\textbf{Expected Deliverable}
+\\
 
 \midrule
 
 1--2 &
 Requirements analysis and system design &
-Requirements, user flows, database design and UI prototype \\
+Requirements, user flows, database design and UI prototype
+\\
 
 3--4 &
 Authentication and backend foundation &
-Working authentication and core backend services \\
+Working authentication and core backend services
+\\
 
 5--7 &
 Marketplace and listing module &
-Create, edit, browse and view product listings \\
+Create, edit, browse and view product listings
+\\
 
 8--9 &
 Search and listing management &
-Search, filters and Available/Reserved/Sold workflow \\
+Search, filters and Available/Reserved/Sold workflow
+\\
 
 10 &
 Reporting and administrative moderation &
-Report submission, moderation dashboard and listing actions \\
+Report submission, moderation dashboard and listing actions
+\\
 
 11 &
 Integration and user testing &
-Integrated prototype and student evaluation \\
+Integrated prototype and student evaluation
+\\
 
 12 &
 Refinement and buffer &
-Final testing, documentation and presentation \\
+Final testing, documentation and presentation
+\\
 
 \bottomrule
 
 \end{tabular}
 
-\caption{Proposed semester development timeline}
+\caption{Proposed Semester Development Timeline}
+
 \end{table}
 
-The final phase includes a buffer period for unexpected
-development, integration or testing delays.
+The final phase includes a buffer period for unexpected development,
+integration or testing delays.
 
 % =========================================================
-% 5. RESOURCES AND BUDGET
+% 11. RESOURCES AND BUDGET
 % =========================================================
 
 \section{Resources and Budget}
 
-The project will be developed by the three-member team. Work will
-be distributed across frontend development, backend and database
+The project will be developed by the three-member team. Work will be
+distributed across frontend development, backend and database
 development, interface design, testing, documentation and system
 integration. Team members will collaborate during integration and
 validation.
 
 Required resources include student laptops, a code editor,
 Git/GitHub for version control, a database, web-development
-frameworks and an appropriate deployment environment. Product
-images will require suitable storage during development and
-testing.
-
-No specialized laboratory equipment is required. Free or
-academic-tier development and hosting services will be preferred
-where available. Consequently, the project is expected to require
-no significant external expenditure.
+frameworks and an appropriate deployment environment. Product images
+will require suitable storage during development and testing.
 
 \begin{table}[H]
 \centering
+
 \renewcommand{\arraystretch}{1.3}
 
-\begin{tabular}{p{7cm} p{5cm}}
+\begin{tabular}{
+    p{7.0cm}
+    p{5.1cm}
+}
 
 \toprule
+
 \textbf{Resource} &
-\textbf{Expected Cost} \\
+\textbf{Expected Cost}
+\\
 
 \midrule
 
 Development tools and code editor &
-No additional cost \\
+No additional cost
+\\
 
 Git/GitHub &
-No additional cost \\
+No additional cost
+\\
 
 Database services &
-Free/academic tier where available \\
+Free/academic tier where available
+\\
 
 Hosting/deployment &
-Free/academic tier where available \\
+Free/academic tier where available
+\\
 
 Testing devices &
-Existing student devices \\
+Existing student devices
+\\
 
 \bottomrule
 
 \end{tabular}
 
-\caption{Resources and estimated project cost}
+\caption{Resources and Estimated Project Cost}
+
 \end{table}
 
-No external funding is required for the proposed academic
-prototype.
+No specialized laboratory equipment or external funding is required
+for the proposed academic prototype. Free or academic-tier
+development and hosting services will be preferred where available.
 
 % =========================================================
-% END
+% 12. SUMMARY
+% =========================================================
+
+\section{Summary}
+
+This project proposes Thapar Trade, a deployable campus marketplace
+that converts informal student-to-student trading into a structured
+software workflow. The system emphasizes authenticated users,
+standardized listings, searchable products, explicit availability
+states and a report-to-moderation mechanism for misleading or
+unauthorized listings.
+
+The project is intentionally scoped as a realistic semester-scale
+prototype, prioritizing a complete and reliable core marketplace
+before advanced functionality.
+
+% =========================================================
+% END DOCUMENT
 % =========================================================
 
 \end{document}
