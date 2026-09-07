@@ -1,6 +1,6 @@
 # Software Engineering Journal
 
-## Project: Thapar Trade
+## Project: ThaparTrade
 
 **Team Member:** Chitesh Jindal  
 **Roll Number:** 1024030454
