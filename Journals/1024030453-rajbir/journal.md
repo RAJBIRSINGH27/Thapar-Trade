@@ -52,3 +52,13 @@
 - Worked on organizing the project files and documentation in the GitHub repository.
 - Contributed to preparing the project presentation and required submission documents.
 - Coordinated with team members to ensure that the required project deliverables were complete and properly organized.
+
+---
+
+## Week 6 (Sep 7 - Sep 13): Frontend Development & Prototype Implementation
+
+- Started implementing the Thapar Trade frontend using React.js, JavaScript/JSX, CSS, and Node.js/npm.
+- Developed the Home Page, Marketplace, navigation, search/filter interface, and listing cards.
+- Implemented the Login/Register, Create a Listing, and User Account interfaces.
+- Tested the frontend locally and fixed UI, branding, and project-structure issues.
+- Prepared screenshots and prototype materials for the final project evaluation.
