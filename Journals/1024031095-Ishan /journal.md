@@ -52,3 +52,13 @@
 - Assisted in refining the proposed user workflows and system navigation.
 - Coordinated with team members to ensure that the major Software Engineering deliverables were properly prepared and organized.
 - Participated in reviewing the current state of the project and identifying the next steps for prototype implementation and testing.
+
+- ---
+
+## Week 6 (Sep 7 - Sep 13): System Design & Prototype Development
+
+- Worked on refining the ER Diagram and Activity Diagram according to the finalized Thapar Trade system workflow.
+- Reviewed the frontend prototype and verified that the implemented interfaces were consistent with the proposed system requirements.
+- Contributed to reviewing the Marketplace, Search and Filter, Create a Listing, Login/Register, and User Account interfaces.
+- Reviewed the project documentation for consistency and contributed to preparing the prototype materials.
+- Coordinated with the team to finalize the required diagrams and prototype for the project evaluation.
