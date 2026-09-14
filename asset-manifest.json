@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Thapar-Trade/static/css/main.d2a94690.css",
-    "main.js": "/Thapar-Trade/static/js/main.387ab4d2.js",
+    "main.css": "/Thapar-Trade/static/css/main.40b34c7f.css",
+    "main.js": "/Thapar-Trade/static/js/main.7e161143.js",
     "static/media/campus.jpg": "/Thapar-Trade/static/media/campus.bd738b4b7ee94e457adf.jpg",
     "index.html": "/Thapar-Trade/index.html",
-    "main.d2a94690.css.map": "/Thapar-Trade/static/css/main.d2a94690.css.map",
-    "main.387ab4d2.js.map": "/Thapar-Trade/static/js/main.387ab4d2.js.map"
+    "main.40b34c7f.css.map": "/Thapar-Trade/static/css/main.40b34c7f.css.map",
+    "main.7e161143.js.map": "/Thapar-Trade/static/js/main.7e161143.js.map"
   },
   "entrypoints": [
-    "static/css/main.d2a94690.css",
-    "static/js/main.387ab4d2.js"
+    "static/css/main.40b34c7f.css",
+    "static/js/main.7e161143.js"
   ]
 }
