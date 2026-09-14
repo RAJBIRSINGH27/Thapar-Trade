@@ -654,61 +654,50 @@ function DocumentationHome({navigate}) {
           </section>
 
 
-          <section id="deliverables" className="doc-section">
-            <div className="section-number">07</div>
-            <h2>Formal Software Engineering Deliverables</h2>
+         <section id="deliverables" className="doc-section">
+  <div className="section-number">07</div>
 
-            <p className="section-intro">
-              Project documentation and engineering artefacts can be
-              placed inside the <code>public/docs</code> directory.
-              Each item below is ready to become a clickable project
-              deliverable.
-            </p>
+  <h2>Formal Software Engineering Deliverables</h2>
 
-            <div className="deliverables-table">
+  <p className="section-intro">
+    The following engineering artefacts document the analysis,
+    design and implementation of the Thapar Trade system.
+  </p>
 
-              <Deliverable
-                title="Project Proposal Report"
-                file="project-proposal.pdf"
-              />
+  <div className="deliverables-table">
 
-              <Deliverable
-                title="ER Diagram"
-                file="er-diagram.pdf"
-              />
+    <Deliverable
+      title="ER Diagram"
+      file="ER_diagram.png"
+    />
 
-              <Deliverable
-                title="UML Activity Diagram"
-                file="activity-diagram.pdf"
-              />
+    <Deliverable
+      title="UML Activity Diagram"
+      file="Activity_diagram.jpg"
+    />
 
-              <Deliverable
-                title="3-Level Data Flow Diagram"
-                file="dfd.pdf"
-              />
+    <Deliverable
+      title="Data Flow Diagram — Level 0"
+      file="DFD_level0.png"
+    />
 
-              <Deliverable
-                title="UML Use Case Diagram"
-                file="use-case.pdf"
-              />
+    <Deliverable
+      title="Data Flow Diagram — Level 1"
+      file="DFD_level1.png"
+    />
 
-              <Deliverable
-                title="Gantt Chart / Project Schedule"
-                file="gantt.pdf"
-              />
+    <Deliverable
+      title="UML Use Case Diagram"
+      file="User_case_diagram.png"
+    />
 
-              <Deliverable
-                title="Evaluation Presentation"
-                file="presentation.pdf"
-              />
+    <Deliverable
+      title="Thapar Trade Evaluation Presentation"
+      file="ThaparTrade_PPT.pdf"
+    />
 
-              <Deliverable
-                title="Prototype Report"
-                file="prototype-report.pdf"
-              />
-
-            </div>
-          </section>
+  </div>
+</section>
 
 
           <section id="roadmap" className="doc-section">
