@@ -1,0 +1,540 @@
+\documentclass[10pt,a4paper]{article}
+
+% ================================================================
+% PACKAGES
+% ================================================================
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{caption}
+
+% ================================================================
+% DOCUMENT SETTINGS
+% ================================================================
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+\setlist[itemize]{
+    leftmargin=0.45in,
+    itemsep=2pt,
+    topsep=2pt
+}
+
+\setlist[enumerate]{
+    leftmargin=0.45in,
+    itemsep=2pt,
+    topsep=2pt
+}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+% ================================================================
+% DOCUMENT
+% ================================================================
+\begin{document}
+
+% ================================================================
+% TITLE
+% ================================================================
+\begin{center}
+
+{\Large\bfseries ThaparTrade}\\[5pt]
+
+{\normalsize Prototype Stage Report for UCS503P}\\[2pt]
+
+{\normalsize Submitted to: Dr. Asif}\\[2pt]
+
+{\normalsize Thapar Institute of Engineering and Technology}\\[12pt]
+
+{\normalsize
+Rajbir Singh, CSED$^{*}$
+\qquad
+Chitesh Jindal, CSED$^{\dagger}$
+\qquad
+Ishan Garg, CSED$^{\ddagger}$
+}\\[10pt]
+
+{\normalsize September 14, 2026}
+
+\end{center}
+
+% ================================================================
+% 1 HIGHER-ORDER GOAL
+% ================================================================
+\section{Higher-order goal}
+
+This project provides Thapar students with a centralized, structured
+and campus-focused marketplace for buying, selling and exchanging
+products within the student community. The prototype connects
+authenticated users, product listing management, marketplace
+discovery, search and filtering, listing status management, reporting,
+and administrative moderation into a single web platform.
+
+The wider goal is to replace fragmented informal channels such as
+WhatsApp groups, social media, personal contacts and scattered
+messages with a dedicated marketplace that improves discoverability,
+organization and trust.
+
+% ================================================================
+% 2 TIME-TO-VALUE
+% ================================================================
+\section{Time-to-value}
+
+\begin{itemize}
+
+    \item We delivered the core
+    \textit{register, list, discover, manage and report} workflow
+    before considering advanced marketplace functionality.
+
+    \item Development was organized around the major marketplace
+    modules: authentication, listing CRUD, browsing, search and
+    filtering, listing status, profiles, reporting and moderation.
+
+    \item Success in this iteration is a working prototype where a
+    student can authenticate, create a product listing, make it
+    discoverable in the marketplace, manage its status, and report
+    problematic listings through the platform.
+
+\end{itemize}
+
+% ================================================================
+% 3 PROBLEM STATEMENT
+% ================================================================
+\section{Problem Statement}
+
+Student-to-student buying and selling at Thapar is commonly conducted
+through informal channels such as WhatsApp groups, social media,
+personal contacts and word of mouth. These channels are convenient
+but do not provide a structured marketplace workflow.
+
+Common pain points include:
+
+\begin{itemize}
+
+    \item \textbf{Scattered listings:} products are distributed
+    across multiple groups, chats and personal networks.
+
+    \item \textbf{Poor discoverability:} useful listings can
+    disappear quickly among unrelated messages, making relevant
+    products difficult to locate.
+
+    \item \textbf{Limited search and filtering:} buyers cannot
+    consistently search products by category, price, condition or
+    availability.
+
+    \item \textbf{Stale availability:} sellers may not update or
+    remove listings after an item has been sold.
+
+    \item \textbf{Trust concerns:} buyers need confidence in the
+    seller and the information provided about a product.
+
+    \item \textbf{Lack of moderation:} there is no centralized
+    campus-specific mechanism for reporting and reviewing
+    misleading, unauthorized or problematic listings.
+
+\end{itemize}
+
+\textbf{Why this matters now:}
+students need a single, searchable and organized platform through
+which they can discover products, publish listings, communicate with
+other students and maintain accurate availability information.
+
+% ================================================================
+% 4 PROPOSED SOLUTION
+% ================================================================
+\section{Proposed Solution}
+
+\subsection{Overview}
+
+A web-based campus marketplace where verified Thapar users can create,
+discover and manage product listings. The system provides a
+marketplace interface, structured listing information, search and
+filtering, listing status management, user profiles, reporting and
+administrative moderation.
+
+The platform is designed around a simple student-to-student trading
+workflow while keeping the core application modular enough for future
+extensions.
+
+\subsection{Core workflow}
+
+\begin{center}
+
+\begin{tikzpicture}[
+    workflow/.style={
+        rectangle,
+        draw=black,
+        minimum width=0.82\textwidth,
+        minimum height=0.42cm,
+        align=center,
+        font=\small
+    },
+    arrow/.style={
+        -{Latex[length=2mm]},
+        thick
+    }
+]
+
+\node[workflow] (w1)
+{Student registers or logs in to ThaparTrade};
+
+\node[workflow,below=0.14cm of w1] (w2)
+{Seller creates a listing with product details, price, condition and images};
+
+\node[workflow,below=0.14cm of w2] (w3)
+{Listing is validated and stored in the marketplace};
+
+\node[workflow,below=0.14cm of w3] (w4)
+{Buyer browses, searches and filters available listings};
+
+\node[workflow,below=0.14cm of w4] (w5)
+{Buyer views listing details and connects with the seller};
+
+\node[workflow,below=0.14cm of w5] (w6)
+{Seller updates listing status or removes the listing};
+
+\node[workflow,below=0.14cm of w6] (w7)
+{Problematic listings can be reported and reviewed by an administrator};
+
+\draw[arrow] (w1) -- (w2);
+\draw[arrow] (w2) -- (w3);
+\draw[arrow] (w3) -- (w4);
+\draw[arrow] (w4) -- (w5);
+\draw[arrow] (w5) -- (w6);
+\draw[arrow] (w6) -- (w7);
+
+\end{tikzpicture}
+
+\captionof{figure}{End-to-end workflow of the ThaparTrade prototype.}
+
+\end{center}
+
+\subsection{Current prototype and implementation status}
+
+The current ThaparTrade prototype provides the core campus
+marketplace functionality. Users can register and log in, manage
+their profiles, browse listings, search and filter products, view
+listing details, create listings, edit and delete their own listings,
+and update listing status.
+
+The administrative workflow supports viewing reports, reviewing
+reported listings, and removing or restoring listings.
+
+The project scope covers user authentication, listing creation and
+management, marketplace browsing, search and filtering, listing
+status management, user profile management, reporting and moderation,
+and persistent data storage.
+
+% ================================================================
+% 5 SOLUTION APPROACH
+% ================================================================
+\section{Solution Approach}
+
+This is an engineering course project, so the emphasis is on a
+working, testable campus marketplace rather than novel algorithm
+research. The solution is divided into independently understandable
+functional modules.
+
+\subsection{Marketplace and listing engine}
+
+The listing workflow is structured around product information and
+availability.
+
+A seller provides the product title, category, description, price,
+condition and images. The system stores the listing and exposes it
+through the marketplace. The seller can subsequently edit, delete or
+update the status of the listing.
+
+The principal listing states are:
+
+\begin{center}
+\textbf{AVAILABLE \quad $\rightarrow$ \quad RESERVED \quad $\rightarrow$ \quad SOLD}
+\end{center}
+
+This explicit lifecycle reduces stale availability and provides
+buyers with clearer information about the current state of an item.
+
+\subsection{Web architecture}
+
+A 3-tier web architecture is used:
+
+\begin{itemize}
+
+    \item \textbf{Frontend:}
+    React.js and Tailwind CSS provide the responsive marketplace,
+    listing interfaces, search and filtering, user profile
+    functionality and administrative views.
+
+    \item \textbf{Backend API:}
+    Node.js and Express.js provide the application services and
+    REST-style communication between the frontend and the data
+    layer.
+
+    \item \textbf{Database:}
+    MongoDB provides persistent storage for users, listings and
+    marketplace records.
+
+\end{itemize}
+
+The documented technology stack additionally includes JWT for
+authentication, AWS S3 for image storage and Razorpay for
+payment-related marketplace functionality.
+
+\subsection{Listing and moderation status}
+
+The marketplace separates normal student operations from
+administrative moderation.
+
+A student can report a listing that appears misleading,
+unauthorized or otherwise problematic. The report is stored and made
+available to the administrator for review.
+
+The administrator can inspect the report and take an appropriate
+action, including removing or restoring the listing.
+
+% ================================================================
+% 6 EVALUATION CRITERION
+% ================================================================
+\section{Evaluation Criterion}
+
+\subsection{Primary evaluation metric}
+
+\textbf{Listing-to-discovery efficiency (LDE):}
+time required for a user to locate a specified relevant product using
+the marketplace search and filtering functionality.
+
+\begin{itemize}
+
+    \item \textbf{Target:} the majority of pilot users should be able
+    to locate a specified listing within a short predefined task
+    window.
+
+    \item \textbf{Attribution:} task completion time can be recorded
+    during user-acceptance testing.
+
+\end{itemize}
+
+\subsection{Secondary evaluation metrics}
+
+\begin{itemize}
+
+    \item \textbf{Listing completion rate:}
+    percentage of users who successfully publish a valid listing.
+
+    \item \textbf{Search success rate:}
+    percentage of users who successfully find the intended item
+    during predefined search tasks.
+
+    \item \textbf{Usability:}
+    average user rating of navigation, marketplace browsing and
+    listing creation on a 1--5 scale.
+
+    \item \textbf{Listing freshness:}
+    percentage of sampled listings whose Available, Reserved or Sold
+    state correctly reflects their current status.
+
+    \item \textbf{Reliability:}
+    successful execution of authentication, listing creation,
+    search, update and reporting operations.
+
+    \item \textbf{Performance:}
+    response time of common marketplace and listing operations under
+    expected student workload.
+
+\end{itemize}
+
+\subsection{Pilot validation plan}
+
+\begin{itemize}
+
+    \item Recruit a small group of student users representing both
+    buyers and sellers.
+
+    \item Provide predefined tasks such as finding a product below a
+    specified price or creating a listing for a used item.
+
+    \item Record task completion, errors, time taken and user
+    feedback.
+
+    \item Use the results to refine the marketplace interface and
+    workflow before the final demonstration.
+
+\end{itemize}
+
+% ================================================================
+% 7 SCALABILITY
+% ================================================================
+\section{Scalability}
+
+\begin{enumerate}
+
+    \item \textbf{Scalable architecture:}
+    the frontend, backend and database responsibilities are separated,
+    allowing individual components to evolve independently as the
+    number of users and listings increases.
+
+    \item \textbf{Marketplace growth:}
+    database indexing, pagination and efficient search queries can
+    support increasing numbers of listings.
+
+    \item \textbf{Image scalability:}
+    product images can be stored separately from core transactional
+    data using cloud object storage such as AWS S3.
+
+    \item \textbf{Modular deployment:}
+    the application can be deployed on common web-hosting
+    infrastructure and migrated to larger infrastructure as usage
+    grows.
+
+\end{enumerate}
+
+% ================================================================
+% 8 ENGINE AVAILABILITY HEURISTIC
+% ================================================================
+\section{Engine availability heuristic}
+
+The prototype uses mature and commonly available web-development
+technologies rather than requiring novel infrastructure.
+
+React.js and Tailwind CSS provide the frontend, while Node.js and
+Express.js provide the backend API. MongoDB provides persistent
+application data storage. JWT provides authenticated access, while
+GitHub is used for version control and team collaboration.
+
+The documented technology stack also includes AWS S3 for image
+storage and Razorpay for payment-related functionality.
+
+This technology combination allows the team to focus on marketplace
+workflow, usability, listing management and moderation rather than
+building infrastructure from scratch.
+
+% ================================================================
+% 9 PROJECT SCOPE AND DELIVERABLES
+% ================================================================
+\section{Project scope and deliverables}
+
+\subsection{Initial deliverable status}
+
+\begin{itemize}
+
+    \item \textbf{User registration and login:}
+    core authentication functionality.
+
+    \item \textbf{Marketplace interface:}
+    browsing of available product listings.
+
+    \item \textbf{Listing creation:}
+    structured product listing with description, price, condition
+    and images.
+
+    \item \textbf{Listing management:}
+    edit and delete functionality for user-owned listings.
+
+    \item \textbf{Search and filtering:}
+    keyword-based discovery with marketplace filtering.
+
+    \item \textbf{Listing status:}
+    Available, Reserved and Sold lifecycle management.
+
+    \item \textbf{Profile management:}
+    user profile functionality and personal listing management.
+
+    \item \textbf{Reporting and moderation:}
+    report submission and administrative listing review.
+
+\end{itemize}
+
+\subsection{Subsequent deliverables}
+
+\begin{itemize}
+
+    \item Improved search, filtering and sorting behaviour.
+
+    \item Enhanced administrative moderation dashboard and report
+    records.
+
+    \item Improved image handling and listing previews.
+
+    \item Optional in-platform messaging or structured buyer-seller
+    communication.
+
+    \item Notifications for listing status and relevant user
+    actions.
+
+    \item Improved analytics for marketplace usage and listing
+    activity.
+
+    \item Further testing with student users and refinement of the
+    integrated prototype.
+
+\end{itemize}
+
+% ================================================================
+% 10 RISKS AND MITIGATIONS
+% ================================================================
+\section{Risks and mitigations}
+
+\begin{itemize}
+
+    \item \textbf{Misleading listings:}
+    provide reporting reasons and an administrative review workflow
+    so problematic listings can be investigated.
+
+    \item \textbf{Stale availability:}
+    use explicit Available, Reserved and Sold states and allow
+    sellers to update listing status.
+
+    \item \textbf{Incomplete listings:}
+    validate required product information before allowing a listing
+    to be published.
+
+    \item \textbf{Trust concerns:}
+    restrict marketplace functionality to authenticated users and
+    provide reporting and moderation mechanisms.
+
+    \item \textbf{Integration defects:}
+    perform feature-level tests followed by integrated testing across
+    the frontend, backend and database.
+
+    \item \textbf{Limited development resources:}
+    prioritize the complete core marketplace before advanced
+    functionality such as notifications, analytics and additional
+    communication features.
+
+\end{itemize}
+
+% ================================================================
+% 11 SUMMARY
+% ================================================================
+\section{Summary}
+
+The ThaparTrade prototype delivers a centralized campus marketplace
+for student-to-student buying and selling. It provides authentication,
+listing creation and management, marketplace browsing, search and
+filtering, listing status management, user profiles, reporting and
+administrative moderation.
+
+The project addresses the fragmentation of informal student trading
+channels by providing a structured workflow for publishing and
+discovering products. The separation of frontend, backend and
+database responsibilities provides a foundation for future
+scalability and additional marketplace functionality.
+
+The next iteration can focus on deeper user testing, improved
+marketplace discovery, enhanced moderation, notifications,
+buyer-seller communication and other extensions while retaining the
+core marketplace workflow.
+
+% ================================================================
+% END DOCUMENT
+% ================================================================
+\end{document}
