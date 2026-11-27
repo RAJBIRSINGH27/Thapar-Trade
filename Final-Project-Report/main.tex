@@ -1,0 +1,352 @@
+\documentclass[12pt,a4paper]{report}
+
+% ---------- Packages ----------
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+\graphicspath{{documentation/}}
+\setstretch{1.15}
+\setlength{\parskip}{3pt}
+\setlength{\parindent}{15pt}
+\setlist{topsep=3pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
+\titlespacing*{\chapter}{0pt}{-10pt}{14pt}
+\titlespacing*{\section}{0pt}{10pt}{4pt}
+\titlespacing*{\subsection}{0pt}{8pt}{3pt}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+% Helper: a diagram gets its own clean page with its caption
+\newcommand{\projectdiagram}[3]{%
+    \clearpage
+    \section{#1}
+    #2
+    \begin{center}
+        \includegraphics[width=0.97\textwidth,height=0.80\textheight,keepaspectratio]{#3}
+        \captionof{figure}{#1}
+    \end{center}
+    \clearpage
+}
+
+\begin{document}
+
+% ---------- Title Page ----------
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    {\Large\bfseries THAPAR INSTITUTE OF ENGINEERING \& TECHNOLOGY\par}
+    \vspace{0.4cm}
+    {\large Department of Computer Science and Engineering\par}
+    \vspace{1.8cm}
+    {\Huge\bfseries THAPAR TRADE\par}
+    \vspace{0.5cm}
+    {\Large Final Software Engineering Project Report\par}
+    \vspace{1.8cm}
+    \textbf{Submitted by}\\[0.5cm]
+    Rajbir Singh -- 1024030453\\
+    Chitesh Jindal -- 1024030454\\
+    Ishan Garg -- 1024031095\\[1.3cm]
+    \textbf{Submitted to:} Jeelani Asif\\[0.5cm]
+    \textbf{Course:} UCS503P -- Software Engineering Lab\\[0.3cm]
+    \textbf{Academic Year:} 2026
+    \vfill
+    Thapar Institute of Engineering \& Technology\\
+    Patiala, Punjab
+\end{titlepage}
+
+\pagenumbering{roman}
+
+% ---------- Abstract ----------
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+Thapar Trade is a campus marketplace prototype designed for the Thapar community.
+It provides a single interface for discovering campus listings, publishing items
+for sale, saving favourites, managing a cart, completing checkout through a
+simulated payment flow, viewing orders, and tracking order status. The project
+also includes listing reports and administrative moderation features.
+
+The frontend is designed to operate as a standalone academic prototype, using
+browser local storage for persistence. An optional FastAPI and SQLite backend is
+also included for local full-stack demonstration. The report describes the
+problem, requirements, system design, implementation, testing, project schedule,
+results, limitations, and future scope.
+
+\tableofcontents
+\listoffigures
+\clearpage
+\pagenumbering{arabic}
+
+% ---------- 1 Introduction ----------
+\chapter{Introduction}
+Thapar Trade is a web-based campus marketplace intended for members of the
+Thapar community. The platform brings common peer-to-peer marketplace activities
+into one place. Users can browse available items, search and filter listings,
+publish and manage their own listings, save items, manage a cart, and view orders.
+The project focuses on making campus item discovery and exchange more organised
+than relying only on informal messages or separate communication groups.
+
+\section{Project Objectives}
+\begin{itemize}
+    \item Provide a central marketplace interface for the Thapar community.
+    \item Allow users to create, edit, and delete item listings.
+    \item Support marketplace browsing, keyword search, and category filtering.
+    \item Provide favourites and cart functionality.
+    \item Support checkout using a simulated payment flow.
+    \item Provide order history and order-status tracking.
+    \item Support listing reports and administrative moderation.
+\end{itemize}
+
+% ---------- 2 Background ----------
+\chapter{Background}
+Campus communities regularly exchange items among students. When listings are
+shared through informal channels, users may need to search through unrelated
+messages, contact sellers separately, and keep track of item details manually.
+A dedicated marketplace can organise listings and provide a consistent interface
+for browsing and managing exchanges.
+
+Thapar Trade addresses this context with a campus-focused marketplace prototype.
+It groups listing discovery, seller information, saved listings, cart operations,
+and order-related workflows in one application.
+
+% ---------- 3 Problem Statement ----------
+\chapter{Problem Statement}
+Students need a convenient way to discover and publish items within their campus
+community. Informal channels do not necessarily provide structured listing
+details, category-based discovery, saved items, cart management, or a consistent
+way to review order status.
+
+The problem addressed by Thapar Trade is the absence of a single organised
+campus marketplace interface that brings these activities together for the
+Thapar community.
+
+% ---------- 4 Requirements ----------
+\chapter{Requirements Analysis}
+\section{Functional Requirements}
+\begin{enumerate}
+    \item Users can access the registration and login interface.
+    \item Users can browse marketplace listings and view item details.
+    \item Users can search listings by keyword and filter by category.
+    \item Users can create, edit, and delete their own listings.
+    \item Users can add and remove listings from favourites.
+    \item Users can add eligible items to a cart and manage quantities.
+    \item Users can proceed through checkout using the simulated payment flow.
+    \item Users can view order history and order status.
+    \item Users can submit ratings, reviews, and listing reports.
+    \item Administrators can access moderation and order-management controls.
+\end{enumerate}
+
+\section{Non-Functional Requirements}
+\begin{itemize}
+    \item The interface should be usable on desktop and mobile screen sizes.
+    \item Common marketplace actions should be presented through a consistent UI.
+    \item The standalone prototype should retain supported data across browser refreshes.
+    \item The codebase should support local development and production build generation.
+\end{itemize}
+
+% ---------- 5 Proposed Solution ----------
+\chapter{Proposed Solution}
+Thapar Trade provides a central web interface for campus marketplace activities.
+A user can browse listings, search for an item, apply category filters, save
+favourites, and manage eligible products in a cart. A seller can create and
+manage listings. The application also provides checkout, simulated payment,
+order history, and order-status workflows. Reporting and administrative
+moderation features support basic marketplace oversight.
+
+\section{Main Modules}
+\begin{description}
+    \item[Authentication interface:] Provides the user registration and login flow.
+    \item[Marketplace:] Displays listings and supports search and category filtering.
+    \item[Listing management:] Supports creating, editing, and deleting listings.
+    \item[Favourites and cart:] Supports saving listings and managing eligible cart items.
+    \item[Checkout and orders:] Supports checkout with simulated payment and order records.
+    \item[Reviews and reports:] Supports feedback and listing-report workflows.
+    \item[Administration:] Provides listing moderation and order-management controls.
+\end{description}
+
+% ---------- 6 Architecture ----------
+\chapter{System Architecture and Technology}
+\section{Technology Stack}
+\begin{itemize}
+    \item \textbf{Frontend:} React.js
+    \item \textbf{Programming language:} JavaScript
+    \item \textbf{Styling:} CSS
+    \item \textbf{Standalone persistence:} Browser local storage
+    \item \textbf{Optional backend:} FastAPI
+    \item \textbf{Optional database:} SQLite
+\end{itemize}
+
+\section{Architecture Overview}
+The standalone frontend provides the user interface and marketplace workflows.
+Browser local storage is used for persistence in the academic prototype. An
+optional FastAPI and SQLite backend is included separately for local full-stack
+demonstration. The GitHub Pages frontend build does not require that optional
+backend.
+
+\section{Important Prototype Scope}
+The frontend checkout uses simulated payment; it does not process a real
+financial transaction. Browser local storage is used for standalone persistence.
+The prototype authentication and administration mechanisms should not be
+interpreted as production-grade identity or access security.
+
+% ---------- 7 Diagrams ----------
+\chapter{System Design Diagrams}
+
+\section{Use Case Diagram}
+The use case diagram presents the interactions between marketplace users and the main system functions.
+\begin{center}
+    \includegraphics[width=0.97\textwidth,height=0.80\textheight,keepaspectratio]{User_case_diagram.png}
+    \captionof{figure}{Use Case Diagram}
+\end{center}
+\clearpage
+
+\projectdiagram{Class Diagram}
+{The class diagram represents the main classes and their relationships in the system design.}
+{Class-diagram.png}
+
+\projectdiagram{Activity Diagram}
+{The activity diagram illustrates the flow of activities within the application.}
+{Activity_diagram.jpg}
+
+\projectdiagram{Sequence Diagram}
+{The sequence diagram shows the sequence of interactions between system participants and components.}
+{Sequence-diagram.png}
+
+\projectdiagram{Collaboration Diagram}
+{The collaboration diagram presents the participating objects and their interaction relationships.}
+{Collaboration-diagram.png}
+
+\projectdiagram{Deployment Diagram}
+{The deployment diagram illustrates the deployment arrangement represented in the supplied project design.}
+{Deployment-Diagram.png}
+
+\projectdiagram{Entity Relationship Diagram}
+{The entity relationship diagram represents the data entities and relationships shown in the supplied design.}
+{ER_diagram.png}
+
+\projectdiagram{Data Flow Diagram -- Level 0}
+{The Level 0 data flow diagram presents the system boundary and its external interactions.}
+{DFD_level0.png}
+
+\projectdiagram{Data Flow Diagram -- Level 1}
+{The Level 1 data flow diagram expands the system processes and data flows.}
+{DFD_level1.png}
+
+% ---------- 8 Implementation ----------
+\chapter{Implementation Overview}
+\section{Marketplace and Listings}
+The marketplace interface supports listing discovery, keyword search, and
+category filtering. Listing management supports adding, editing, and deleting
+items. Item details and seller information are presented as part of the
+marketplace workflow.
+
+\section{Favourites and Cart}
+Users can save listings to favourites and manage eligible items in a cart.
+Cart quantity management and restrictions are part of the purchase workflow.
+
+\section{Checkout and Order Management}
+The checkout workflow collects order information and creates an order record
+using the prototype's simulated payment process. Users can view order history
+and order status. No live payment gateway is represented by this prototype.
+
+\section{Reviews, Reports, and Administration}
+The application includes ratings and reviews, listing reports, and an
+administrative moderation dashboard. Administrative features support review
+of listings and order-related status workflows.
+
+% ---------- 9 Testing ----------
+\chapter{Testing and Validation}
+The project team tested eight major test scenarios covering the principal
+application workflows. The detailed test cases, expected results, actual
+results, and execution status are included in the attached test-case document.
+
+\clearpage
+% Keep Test_Cases.pdf in the same Overleaf folder as main.tex.
+\includepdf[pages=-,pagecommand={},fitpaper=true]{documentation/test_cases/Test_Cases.pdf}
+\clearpage
+
+% ---------- 10 Gantt ----------
+\chapter{Project Schedule and Gantt Chart}
+The project schedule records the planned activities, assigned team members,
+progress, and dates across the project period. The complete Gantt chart is
+included below in its original spreadsheet-template layout.
+
+\clearpage
+% Keep Gantt_Chart.pdf in the same Overleaf folder as main.tex.
+\includepdf[pages=-,pagecommand={},fitpaper=true]{documentation/gantt_chart/Gantt_Chart.pdf}
+\clearpage
+
+% ---------- 11 Results ----------
+\chapter{Results}
+The delivered prototype brings the main campus marketplace workflows into one
+application. Its implemented scope includes marketplace browsing, listing
+management, search and filtering, favourites, cart operations, simulated
+checkout, order history and tracking, reviews, reports, and administrative
+moderation.
+
+The test-case document records the eight major scenarios tested by the project
+team. The project also includes the supplied system-design diagrams and the
+project schedule.
+
+% ---------- 12 Limitations ----------
+\chapter{Limitations and Future Scope}
+\section{Limitations}
+\begin{itemize}
+    \item The frontend checkout uses simulated payment rather than a live payment gateway.
+    \item The standalone frontend uses browser local storage for persistence.
+    \item The academic prototype's authentication and administration features
+    are not production-grade security mechanisms.
+    \item The optional backend is provided for local full-stack demonstration;
+    the GitHub Pages frontend build is standalone.
+\end{itemize}
+
+\section{Future Scope}
+\begin{itemize}
+    \item Integrate a production backend and hosted database.
+    \item Implement secure institutional identity verification and server-side authorization.
+    \item Integrate a real payment gateway after completing the required onboarding.
+    \item Add reliable notification and delivery-status integrations.
+    \item Improve monitoring, audit logging, and deployment security.
+\end{itemize}
+
+% ---------- 13 Conclusion ----------
+\chapter{Conclusion}
+Thapar Trade demonstrates a campus-focused marketplace prototype that combines
+item discovery, listing management, favourites, cart operations, checkout,
+order tracking, reviews, reports, and administrative moderation. The project
+provides a structured digital interface for marketplace activities within the
+Thapar community. The included diagrams, test cases, and project schedule
+document the design and development work.
+
+% ---------- References ----------
+\begin{thebibliography}{9}
+\bibitem{react}
+React Documentation. \url{https://react.dev/}
+
+\bibitem{fastapi}
+FastAPI Documentation. \url{https://fastapi.tiangolo.com/}
+
+\bibitem{sqlite}
+SQLite Documentation. \url{https://www.sqlite.org/docs.html}
+
+\bibitem{githubpages}
+GitHub Pages Documentation. \url{https://docs.github.com/en/pages}
+\end{thebibliography}
+
+\end{document}
