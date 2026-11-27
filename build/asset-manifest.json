@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Thapar-Trade/static/css/main.645ecb95.css",
+    "main.js": "/Thapar-Trade/static/js/main.ced5a01c.js",
+    "static/media/campus.jpg": "/Thapar-Trade/static/media/campus.bd738b4b7ee94e457adf.jpg",
+    "index.html": "/Thapar-Trade/index.html",
+    "main.645ecb95.css.map": "/Thapar-Trade/static/css/main.645ecb95.css.map",
+    "main.ced5a01c.js.map": "/Thapar-Trade/static/js/main.ced5a01c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.645ecb95.css",
+    "static/js/main.ced5a01c.js"
+  ]
+}
