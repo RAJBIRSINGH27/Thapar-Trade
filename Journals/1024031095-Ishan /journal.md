@@ -1,64 +1,68 @@
-# Weekly Progress Journal — Ishan Garg (Roll No: 1024031095)
 
-**Project Name:** Thapar Trade  
-**Role:** Frontend Development, UI/UX Design, System Integration & Testing
+# THAPAR TRADE – WEEKLY PROJECT JOURNAL
 
----
-
-## Week 1 (Aug 3 - Aug 9): Project Ideation & Requirement Understanding
-
-- Participated in brainstorming sessions with the team to finalize the Thapar Trade project idea.
-- Analysed the problems faced by students while buying, selling, and exchanging items within the campus community.
-- Discussed the expected users and their interaction with the proposed marketplace system.
-- Contributed ideas regarding the user interface and important features required to make the platform simple and accessible for students.
-- Helped identify the basic user flow from registration and browsing products to listing and exchanging items.
+**Team Member:** Ishan Garg  
+**Roll Number:** 1024031095  
+**Course:** UCS503P – Software Engineering  
+**Project:** Thapar Trade
 
 ---
 
-## Week 2 (Aug 10 - Aug 16): Requirement Analysis & Feature Planning
+## Week 1: 03 August – 09 August 2026
+Participated in the initial project-planning discussions and helped define the technical direction of Thapar Trade. Reviewed the proposed marketplace concept and its expected functionality.
 
-- Contributed to analysing the functional requirements of the Thapar Trade platform.
-- Discussed important application features such as user registration, login, product listing, product browsing, search, and user interaction.
-- Helped define the expected workflow for buyers and sellers.
-- Participated in discussions regarding the interface structure and organization of different system modules.
-- Reviewed the proposed requirements with the team and suggested improvements to make the system suitable for a student-to-student marketplace.
+## Week 2: 10 August – 16 August 2026
+Contributed to the initial requirement discussions, focusing on the technical feasibility of the proposed student marketplace and its major components.
+
+## Week 3: 17 August – 23 August 2026
+Reviewed the project requirements and supported the team in organizing the initial technical documentation and development plan.
+
+## Week 4: 24 August – 30 August 2026
+Worked on the ER Diagram and Collaboration Diagram. Identified the main entities, their relationships, and the interactions between different system components.
+
+## Week 5: 31 August – 06 September 2026
+Continued refining the ER Diagram and Collaboration Diagram. Reviewed entity relationships and communication flow to maintain consistency with the project requirements.
+
+## Week 6: 07 September – 13 September 2026
+Worked on the technical setup and backend planning. Reviewed the required data structures and supported the development of the marketplace functionality.
+
+## Week 7: 14 September – 20 September 2026
+Participated in the project-metrics review and supported the technical evaluation of the implemented marketplace features.
+
+## Week 8: 21 September – 27 September 2026
+Reviewed the technical implementation and supported frontend and end-to-end testing. Discussed identified issues and possible improvements with the team.
+
+## Week 9: 28 September – 04 October 2026
+Continued supporting the project-metrics review and examined the technical consistency of the marketplace implementation.
+
+## Week 10: 05 October – 11 October 2026
+Reviewed the technical requirements and supported ongoing testing of the marketplace components. Discussed implementation improvements with the team.
+
+## Week 11: 12 October – 18 October 2026
+Participated in the review of the overall system architecture and documented requirements while frontend and end-to-end testing continued.
+
+## Week 12: 19 October – 25 October 2026
+Reviewed the technical integration requirements for the cart and order workflow. Coordinated with the team regarding the upcoming implementation activities.
+
+## Week 13: 26 October – 01 November 2026
+Supported the cart and order-flow implementation by reviewing how the different marketplace components interact during the purchasing process.
+
+## Week 14: 02 November – 08 November 2026
+Reviewed the integrated system and supported the final frontend-testing activities. Checked the consistency of the technical workflow with the planned requirements.
+
+## Week 15: 09 November – 15 November 2026
+Participated in end-to-end testing and reviewed the behaviour of the integrated marketplace. Discussed technical observations and corrections with the team.
+
+## Week 16: 16 November – 22 November 2026
+Contributed to final project documentation by reviewing the technical architecture, diagrams, implementation details, and supporting materials.
+
+## Week 17: 23 November – 29 November 2026
+Participated in preparing and reviewing the final presentation. Helped ensure that the technical implementation and system workflow were explained clearly.
+
+## Week 18: 30 November – 04 December 2026
+Participated in the final project-submission review and checked the technical deliverables to ensure that the required project materials were organized.
 
 ---
 
-## Week 3 (Aug 17 - Aug 23): Proposal Development & Interface Planning
-
-- Contributed to the development and refinement of the Thapar Trade project proposal.
-- Reviewed the proposed system functionality and helped align the interface requirements with the project objectives.
-- Planned the basic structure of the application's user interface and navigation flow.
-- Discussed possible layouts for product listings, product details, user profiles, and marketplace interactions.
-- Coordinated with team members to ensure that the proposed interface and system functionality were consistent with the documented requirements.
-
----
-
-## Week 4 (Aug 24 - Aug 30): System Design & Documentation
-
-- Contributed to reviewing the Use Case Diagram and DFD to understand the interaction between users and different system processes.
-- Helped verify that the proposed user interface and workflows were consistent with the system design.
-- Reviewed project documentation and identified areas requiring corrections or clarification.
-- Participated in discussions regarding the organization of system modules and user interactions.
-- Assisted the team in finalizing the documentation and presentation material according to the project requirements.
-
----
-
-## Week 5 (Aug 31 - Sep 6): Repository Organization & Project Refinement
-
-- Contributed to organizing the Thapar Trade project resources and documentation in the GitHub repository.
-- Reviewed the project proposal, diagrams, presentation, and weekly journal structure for consistency.
-- Assisted in refining the proposed user workflows and system navigation.
-- Coordinated with team members to ensure that the major Software Engineering deliverables were properly prepared and organized.
-- Participated in reviewing the current state of the project and identifying the next steps for prototype implementation and testing.
-
-- ---
-
-## Week 6 (Sep 7 - Sep 13): System Design & Prototype Development
-
-- Worked on refining the ER Diagram and Activity Diagram according to the finalized Thapar Trade system workflow.
-- Reviewed the frontend prototype and verified that the implemented interfaces were consistent with the proposed system requirements.
-- Contributed to reviewing the Marketplace, Search and Filter, Create a Listing, Login/Register, and User Account interfaces.
-- Reviewed the project documentation for consistency and contributed to preparing the prototype materials.
-- Coordinated with the team to finalize the required diagrams and prototype for the project evaluation.
+**Project:** Thapar Trade  
+**Course:** UCS503P – Software Engineering
