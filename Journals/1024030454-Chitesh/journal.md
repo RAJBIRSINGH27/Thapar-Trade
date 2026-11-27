@@ -1,64 +1,68 @@
-# Weekly Progress Journal — Chitesh Jindal (Roll No: 1024030454)
 
-**Project Name:** Thapar Trade  
-**Role:** Frontend Development, UI Design & Testing
+# THAPAR TRADE – WEEKLY PROJECT JOURNAL
 
----
-
-## Week 1 (Aug 3 - Aug 9): Project Ideation & Requirement Analysis
-
-- Participated in group brainstorming sessions to identify and finalize the project idea, Thapar Trade.
-- Discussed the problems faced by students in buying, selling, and exchanging items within the college community.
-- Participated in identifying the primary users and their requirements.
-- Discussed the core features required for the proposed system, including user registration, item listing, marketplace browsing, searching, and user interaction.
-- Contributed to defining the initial project scope, objectives, and expected functionality.
+**Team Member:** Chitesh Jindal  
+**Roll Number:** 1024030454  
+**Course:** UCS503P – Software Engineering  
+**Project:** Thapar Trade
 
 ---
 
-## Week 2 (Aug 10 - Aug 16): Requirement Specification & System Analysis
+## Week 1: 03 August – 09 August 2026
+Participated in the team's discussion to establish the scope, purpose, and expected features of Thapar Trade. Shared inputs on the student-to-student marketplace workflow.
 
-- Participated in analysing the functional and non-functional requirements of the Thapar Trade system.
-- Contributed to identifying the major system modules and user interactions.
-- Discussed the authentication, marketplace, and listing management modules with the team.
-- Contributed to defining the user workflow for browsing listings, creating listings, and managing existing listings.
-- Participated in discussions regarding reporting and administrative moderation functionality.
+## Week 2: 10 August – 16 August 2026
+Contributed to early planning discussions and reviewed the proposed problem focus from the perspective of listing and discovering campus items.
+
+## Week 3: 17 August – 23 August 2026
+Reviewed the initial project documentation and discussed the software-engineering requirements with the team.
+
+## Week 4: 24 August – 30 August 2026
+Worked on the Data Flow Diagrams (DFD) and UML Sequence Diagram, representing information flow and system interactions. Coordinated the design with the team's user and marketplace definitions.
+
+## Week 5: 31 August – 06 September 2026
+Continued developing the DFD and Sequence Diagram, refining process flow and interactions to match the requirements and use-case design.
+
+## Week 6: 07 September – 13 September 2026
+Defined the listing-moderation approach and worked on listing-validation requirements. Reviewed listing-related reports as assigned and coordinated with implementation work.
+
+## Week 7: 14 September – 20 September 2026
+Participated in the project-metrics review and supported the team in reviewing listing-related requirements and expected behaviour.
+
+## Week 8: 21 September – 27 September 2026
+Reviewed listing and moderation requirements during frontend and end-to-end testing. Shared observations about issues requiring attention.
+
+## Week 9: 28 September – 04 October 2026
+Continued supporting the project-metrics review and checked the listing workflow against documented requirements.
+
+## Week 10: 05 October – 11 October 2026
+Reviewed listing creation, validation, and moderation while the team continued testing. Helped clarify expected behaviour for listing-related test cases.
+
+## Week 11: 12 October – 18 October 2026
+Participated in the team review of listing functionality and discussed gaps identified during the ongoing testing cycle.
+
+## Week 12: 19 October – 25 October 2026
+Reviewed the listing workflow and its interaction with the marketplace in preparation for cart and order-flow implementation.
+
+## Week 13: 26 October – 01 November 2026
+Participated in the review of cart and order-flow integration, focusing on how listings connect with the buyer workflow.
+
+## Week 14: 02 November – 08 November 2026
+Supported the final frontend-testing period by reviewing listing validation, moderation, and related user interactions.
+
+## Week 15: 09 November – 15 November 2026
+Participated in end-to-end testing and reviewed listing-related scenarios as part of the complete marketplace workflow.
+
+## Week 16: 16 November – 22 November 2026
+Reviewed project documentation and diagrams for consistency with the implemented listing and moderation features. Shared corrections for the final documentation.
+
+## Week 17: 23 November – 29 November 2026
+Contributed to the final presentation review, ensuring listing, validation, and moderation responsibilities were represented accurately.
+
+## Week 18: 30 November – 04 December 2026
+Participated in final submission checks and reviewed the listing-related project material included in the deliverables.
 
 ---
 
-## Week 3 (Aug 17 - Aug 23): Project Proposal & System Design
-
-- Contributed to drafting and refining the Software Engineering project proposal for Thapar Trade.
-- Participated in defining the problem statement, project objectives, scope, and expected outcomes.
-- Contributed to discussions regarding the overall system architecture and major modules.
-- Reviewed the initial Use Case Diagram representing interactions between users, administrators, and the system.
-- Discussed the system workflow and data movement required for preparing the Data Flow Diagram (DFD).
-
----
-
-## Week 4 (Aug 24 - Aug 30): UML & Documentation Development
-
-- Participated in reviewing and refining the Use Case Diagram for the Thapar Trade system.
-- Contributed to the development and review of the Data Flow Diagram (DFD), representing the flow of information between users, system processes, and data stores.
-- Reviewed the project proposal and supporting documentation for consistency and completeness.
-- Participated in discussions regarding the features to be included and excluded from the midterm prototype.
-- Collaborated with team members to organize and finalize the required Software Engineering deliverables.
-
----
-
-## Week 5 (Aug 31 - Sep 6): Documentation Refinement & Frontend Preparation
-
-- Reviewed the finalized Use Case Diagram and DFD based on the project requirements.
-- Contributed to reviewing the project proposal and supporting documentation for clarity, consistency, and completeness.
-- Participated in discussions regarding the design and functionality of the frontend prototype.
-- Reviewed the planned marketplace interfaces, including login/register, marketplace browsing, search and filtering, listing creation, and user account management.
-- Coordinated with team members to prepare the project structure and requirements for frontend implementation.
-
----
-
-## Week 6 (Sep 7 - Sep 13): Frontend Development & UI Testing
-
-- Contributed to developing the Thapar Trade frontend prototype using **React.js, JavaScript/JSX, CSS, and Node.js/npm**.
-- Worked on the Login/Register, Create a Listing, and User Account and Listings interfaces.
-- Assisted in refining the Marketplace interface, navigation, listing cards, and search/filter functionality.
-- Tested the frontend locally and helped identify and resolve UI, branding, navigation, and project-structure issues.
-- Contributed to preparing screenshots and prototype materials for the final project evaluation.
+**Project:** Thapar Trade  
+**Course:** UCS503P – Software Engineering
